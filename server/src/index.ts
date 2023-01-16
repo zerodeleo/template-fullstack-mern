@@ -7,9 +7,8 @@ dotenv.config();
 const app: Express = express();
 const port = process.env.PORT || 8080;
 
-const allowedOrigins = [
-  'http://localhost:5173', 
-  <string>process.env.DOMAIN
+const allowedOrigins = [ 
+  <string>process.env.CLIENT_URL
 ];
 
 const options: cors.CorsOptions = {

@@ -1,14 +1,16 @@
 import { useState } from 'react';
-import axios from 'axios';
 
 // Styles
 import * as styles from './styles';
+
+// Services
+import { get } from './service';
 
 function App() {
   const [res, setRes] = useState('');
 
   const handleClick = async() => {
-    const response = await axios.get('http://localhost:8080/');
+    const response = await get();
     response && setRes(response.data);
   }
 
