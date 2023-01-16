@@ -1,35 +1,36 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
-import cors from 'cors';
 import mongoose from 'mongoose';
 import { config } from './config';
 import Logging from './library/Logging';
+import { listen, logRequest, setCors } from './middleware';
 
 dotenv.config();
 
 const app: Express = express();
 
-/** Connect to MongoDB **/
+/** Connect to MongoDB */
 mongoose
   .connect(config.mongo.url)
-  .then(() => Logging.info('[database]: Successfully connected'))
-  .catch((err) => Logging.error(`[database]: ${err}`));
+  .then(() => {
+    Logging.info('🫙  [database]: Successfully connected');
+    startServer();
+  })
+  .catch((err) => Logging.error(`🫙  [database]: ${err}`));
 
-const port = process.env.PORT || 8080;
+/** Connect to Server */
+const startServer = () => {
+  logRequest();
+  setCors();
 
-const allowedOrigins = [<string>process.env.CLIENT_URL];
+  app.use(express.urlencoded({ extended: true }));
+  app.use(express.json());
 
-const options: cors.CorsOptions = {
-  origin: allowedOrigins
+  app.get('/', (req: Request, res: Response) => {
+    res.send('Express + TypeScript Server');
+  });
+
+  listen();
 };
 
-app.use(cors(options));
-app.use(express.json());
-
-app.get('/', (req: Request, res: Response) => {
-  res.send('Express + TypeScript Server');
-});
-
-app.listen(port, () => {
-  Logging.info(`[server]: Running on port ${port}`);
-});
+export default app;
