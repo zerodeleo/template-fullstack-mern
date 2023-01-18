@@ -30,9 +30,9 @@ const startServer = () => {
   app.use(express.json());
 
   /** Routes */
-
   app.use('/users', userRoutes);
 
+  // Test route
   app.get('/ping', (req: Request, res: Response) => {
     res.send('pong');
     res.end();
