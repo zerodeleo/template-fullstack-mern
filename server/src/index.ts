@@ -3,7 +3,8 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import { config } from './config';
 import Logging from './library/Logging';
-import { listen, logRequest, setCors } from './middleware';
+import { listen, logRequest, setCors, err, useCookies } from './middleware';
+import userRoutes from './routes/User'
 
 dotenv.config();
 
@@ -20,16 +21,24 @@ mongoose
 
 /** Connect to Server */
 const startServer = () => {
+  /** Middlewares */
   logRequest();
   setCors();
+  useCookies();
 
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
 
-  app.get('/', (req: Request, res: Response) => {
-    res.send('Express + TypeScript Server');
+  /** Routes */
+
+  app.use('/users', userRoutes);
+
+  app.get('/ping', (req: Request, res: Response) => {
+    res.send('pong');
+    res.end();
   });
 
+  err();
   listen();
 };
 

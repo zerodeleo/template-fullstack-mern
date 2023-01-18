@@ -1,6 +1,7 @@
 import app from '../';
 import Logging from '../library/Logging';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 
 export const logRequest = () => {
   app.use((req, res, next) => {
@@ -27,5 +28,17 @@ export const listen = () => {
   const port = process.env.PORT || 8080;
   app.listen(port, () => {
     Logging.info(`💻 [server]: Running on port ${port}`);
+  });
+};
+
+export const useCookies = () => {
+  app.use(cookieParser());
+};
+
+export const err = () => {
+  app.use((_, res) => {
+    const err = new Error('Not found');
+    Logging.error(err);
+    return res.status(404).json({ message: err.message });
   });
 };
