@@ -6,13 +6,19 @@
 
 Follow these easy steps and you will have a fullstack MERN application up and running within 10min.
 
-✅ TS ✅ Mongoose ✅ Vite ✅ Easy setup ✅ Easy deployment ✅ Basic authentication service <br/> ✅ CRUD user <br/>
+✅ TS <br/>
+✅ Mongoose <br/>
+✅ Vite <br/>
+✅ Easy setup <br/>
+✅ Easy deployment <br/>
+✅ Basic authentication service <br/>
+✅ CRUD user <br/>
 
 When I started coding I spent so many hours trying to figure out how to create the perfect work environment for my fullstack applications. How do I get it up and running...?
 
 TODO:
 
-- Add redux
+- Add redux and/or context
 
 ### These are the FAQ that I had which this boilerplate covers:
 
