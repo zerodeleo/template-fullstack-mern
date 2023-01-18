@@ -1,34 +1,32 @@
-import { useState } from 'react';
+import React, { useState, FC } from 'react';
 
 // Styles
 import * as styles from './styles';
 
 // Services
-import { get } from './service';
+import { ping } from './service';
 
-function App() {
+const App = () => {
   const [res, setRes] = useState('');
 
-  const handleClick = async() => {
-    const response = await get();
-    response && setRes(response.data);
-  }
+  const handleClick = async () => {
+    const response = await ping();
+    setRes(response.data);
+  };
 
   return (
     <section className={`${styles.center}`}>
       <article>
-        <button className={`${styles.button}`}
-          type="button"
-          onClick={handleClick}>
-            Click here to request data from Server
+        <button className={`${styles.button}`} type="button" onClick={handleClick}>
+          Ping
         </button>
       </article>
-      <br/>
+      <br />
       <article>
-        {res && <p className="text-xl">You successfully got a response:<br/>{res}</p>}
+        <p className="text-xl">{res}</p>
       </article>
     </section>
-  )
-}
+  );
+};
 
-export default App
+export default App;
