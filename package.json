@@ -7,7 +7,9 @@
     "dev": "concurrently \"cd server && npm run start\" \"cd client && npm run dev & open http://127.0.0.1:5173/\"",
     "dev-server": "cd server && npm run dev",
     "dev-client": "cd client && npm run dev & open http://127.0.0.1:5173/",
-    "postinstall": "concurrently \"cd server && npm i\" \"cd client && npm i\""
+    "postinstall": "concurrently \"cd server && npm i\" \"cd client && npm i\"",
+    "reinstall": "concurrently \"rm -r './server/node_modules'\" \"rm -r './client/node_modules'\" \"rm -r './node_modules'\" & \"npm i\"",
+    "kill-all-ports": ""
   },
   "author": "zerodeleo",
   "license": "ISC",

@@ -1,4 +1,4 @@
-import app from '../';
+import app from '..';
 import Logging from '../library/Logging';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
@@ -16,7 +16,8 @@ export const logRequest = () => {
 };
 
 export const setCors = () => {
-  const allowedOrigins = [<string>process.env.CLIENT_URL];
+  const CLIENT_URL = <string>process.env.CLIENT_URL;
+  const allowedOrigins = CLIENT_URL ? [CLIENT_URL] : ['http://127.0.0.1:5173', 'http://localhost:5173'];
   const options: cors.CorsOptions = {
     origin: allowedOrigins
   };

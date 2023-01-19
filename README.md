@@ -36,10 +36,11 @@ TODO:
 
 1. Clone this repo
 2. `npm i`
-3. `cd server && touch .env`
-   - `CLIENT_URL=http://127.0.0.1:5173`
-4. `cd client && touch .env`
-   - `VITE_API_URL=http://localhost:8080/`
+
+## Run the application in dev mode
+1. `npm run dev-client` 
+   * make sure it's running on port `5173`
+2. In a separate terminal `npm run dev-server`
 
 ## 1. Setting up mongodb
 
@@ -55,9 +56,9 @@ TODO:
 ## 2. Deployment
 
 1. Deploy `client` and `server` separately
-   - *E.g. push this entire repo to your vc and authorize access to CDN/CMS*
+   - *Push this entire repo to your vc and authorize access to CDN/CMS*
    - *Choose repo and change root folder to `client` for `client` deployment and `server` for `server` deployment*
-   - *E.g. Deployment on [Render](https://render.com/) choose `static site` for `client` and `web-service` for `server`*
+   - *Deployment on [Render](https://render.com/) choose `static site` for `client` and `web-service` for `server`*
 2. For both `client` and `server`
    - Build command: `build`
    - Start command: `start`

@@ -36,11 +36,15 @@ const createUser = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 const readUser = (req: Request, res: Response, next: NextFunction) => {
-  const { _id } = req.params;
+  const { username } = req.params;
 
-  return User.findById(_id)
-    .then((user) => (user ? res.json({ user }) : res.status(404).json({ message: 'User not found' })))
-    .catch((err) => res.status(500).json({ err }));
+  User.find({ username }).then((user) => {
+    if (user.length !== 0) {
+      return res.status(200).json({ user });
+    } else {
+      return res.status(403).json({ message: 'User not found' });
+    }
+  });
 };
 
 const readAllUsers = (_: Request, res: Response, next: NextFunction) => {
