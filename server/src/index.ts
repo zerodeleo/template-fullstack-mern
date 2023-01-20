@@ -2,9 +2,9 @@ import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import { config } from './config';
-import Logging from './library/Logging';
+import Logging from './lib/Logging';
 import { listen, logRequest, setCors, err, useCookies } from './middleware';
-import userRoutes from './routes/User'
+import userRoutes from './routes/User';
 
 dotenv.config();
 

@@ -1,5 +1,5 @@
 import app from '..';
-import Logging from '../library/Logging';
+import Logging from '../lib/Logging';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 

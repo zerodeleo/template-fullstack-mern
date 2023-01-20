@@ -21,6 +21,7 @@ const authenticateUser = (req: Request, res: Response, next: NextFunction) => {
 
 const createUser = async (req: Request, res: Response, next: NextFunction) => {
   const { username, password } = req.body;
+  console.log(username, password);
 
   const _id = new mongoose.Types.ObjectId();
 
@@ -28,7 +29,7 @@ const createUser = async (req: Request, res: Response, next: NextFunction) => {
     const user = new User({ _id, username, password });
     return user
       .save()
-      .then((user) => res.cookie('_id', _id).status(201).json({ user }))
+      .then((user) => res.status(201).json({ user }))
       .catch((err) => res.status(500).json({ err }));
   } else {
     return res.status(409).json({ message: 'Username already exists' });
@@ -38,9 +39,9 @@ const createUser = async (req: Request, res: Response, next: NextFunction) => {
 const readUser = (req: Request, res: Response, next: NextFunction) => {
   const { username } = req.params;
 
-  User.find({ username }).then((user) => {
+  User.find({ username }, { password: 0 }).then((user) => {
     if (user.length !== 0) {
-      return res.status(200).json({ user });
+      return res.status(200).json({ username: user[0].username, _id: user[0]._id });
     } else {
       return res.status(403).json({ message: 'User not found' });
     }
