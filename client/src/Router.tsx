@@ -3,11 +3,10 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import App from './App';
 import Users from './pages/users/Users';
 import User from './pages/users/[username]';
-import { CLIENT_URL } from './service';
 
 const Router: FC = () => {
   return (
-    <BrowserRouter basename={CLIENT_URL}>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/users" element={<Users />} />
