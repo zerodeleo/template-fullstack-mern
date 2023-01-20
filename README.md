@@ -1,6 +1,6 @@
-# This is a WIP repo, release will be announced shortly
-
 # zerodeleo
+
+[Client](https://template-fullstack-mern.onrender.com/)
 
 ## 💻💻💻 MERN-STACK BOILERPLATE
 
@@ -13,12 +13,9 @@ Follow these easy steps and you will have a fullstack MERN application up and ru
 ✅ Easy deployment <br/>
 ✅ Basic authentication service <br/>
 ✅ CRUD user <br/>
+✅ State management: Redux RTK [@reduxjs/toolkit](https://redux-toolkit.js.org/) <br/>
 
 When I started coding I spent so many hours trying to figure out how to create the perfect work environment for my fullstack applications. How do I get it up and running...?
-
-TODO:
-
-- Add redux and/or context
 
 ### These are the FAQ that I had which this boilerplate covers:
 
