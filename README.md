@@ -61,5 +61,9 @@ When I started coding I spent so many hours trying to figure out how to create t
    - Start command: `start`
 3. For deploying `client` add environment variables to CDN/CMS
    - `VITE_API_URL={placeholder for api url}`
+   - Add Redirects/Rewrites
+      * source `/*`
+      * destination `/index.html`
+      * action `rewrite`
 4. For deploying `server` add environment variables to CDN/CMS
    - `CLIENT_URL={placeholder for client url}`

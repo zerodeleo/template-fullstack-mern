@@ -11,7 +11,7 @@ const Router: FC = () => {
         <Route path="/" element={<App />} />
         <Route path="/users" element={<Users />} />
         <Route path="/users/:username" element={<User />} />
-        <Route path="*" element={<p>404 Page not found</p>} />
+        <Route path="/*" element={<p>404 Page not found</p>} />
       </Routes>
     </BrowserRouter>
   );
