@@ -7,12 +7,12 @@ const isTrueIfUsernameExists = async (username: string) => {
   return user.length === 0;
 };
 
-const authenticateUser = (req: Request, res: Response, next: NextFunction) => {
+const authenticateUser = async (req: Request, res: Response, next: NextFunction) => {
   const { username, password } = req.body;
 
   User.find({ username }).then((user) => {
     if (user.length !== 0 && user[0].password === password) {
-      return res.status(200).json({ user });
+      return res.status(200).json({ _id: user[0]._id });
     } else {
       return res.status(403).json({ message: 'Wrong credentials' });
     }
@@ -29,7 +29,7 @@ const createUser = async (req: Request, res: Response, next: NextFunction) => {
     const user = new User({ _id, username, password });
     return user
       .save()
-      .then((user) => res.status(201).json({ user }))
+      .then((user) => res.status(201).json({ _id }))
       .catch((err) => res.status(500).json({ err }));
   } else {
     return res.status(409).json({ message: 'Username already exists' });
@@ -37,9 +37,9 @@ const createUser = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 const readUser = (req: Request, res: Response, next: NextFunction) => {
-  const { username } = req.params;
+  const { _id } = req.params;
 
-  User.find({ username }, { password: 0 }).then((user) => {
+  User.find({ _id }, { password: 0 }).then((user) => {
     if (user.length !== 0) {
       return res.status(200).json({ username: user[0].username, _id: user[0]._id });
     } else {

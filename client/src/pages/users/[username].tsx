@@ -1,5 +1,5 @@
 import { FC, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../lib/redux/hooks';
 import { selectUser } from '../../lib/redux/selectors';
 import { readUser, createUser } from '../../lib/redux/actions';
@@ -11,7 +11,6 @@ interface IUserProps {}
 
 const User: FC<IUserProps> = (props) => {
   const username = useParams().username as string;
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectUser);
 

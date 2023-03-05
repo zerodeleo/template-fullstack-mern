@@ -1,12 +1,7 @@
-import { AsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import { actions } from '../actions';
 import { IPromiseState } from '../interfaces';
-import { RootState } from '../store';
-
-type GenericAsyncThunk = AsyncThunk<unknown, unknown, any>;
-
-type PendingAction = ReturnType<GenericAsyncThunk['pending']>;
-type RejectedAction = ReturnType<GenericAsyncThunk['rejected']>;
-type FulfilledAction = ReturnType<GenericAsyncThunk['fulfilled']>;
+import { FulfilledAction, PendingAction, RejectedAction } from '../types';
 
 export interface IUser {
   username: string;
@@ -14,10 +9,6 @@ export interface IUser {
 
 export interface IUserState extends IUser, IPromiseState {
   _id: string;
-}
-
-export interface IAuthenticateUser extends IUser {
-  password: string;
 }
 
 export const initialState = {
@@ -50,6 +41,12 @@ export const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      .addCase(actions.createUser.fulfilled, (state, action) => {
+        const user = idleUser(action.payload.data);
+        console.log(user);
+        localStorage.setItem('_id', user._id);
+        return user;
+      })
       .addMatcher<FulfilledAction>(
         (action) => action.type.endsWith('/user/fulfilled'),
         (_, action: any) => idleUser(action.payload.data)

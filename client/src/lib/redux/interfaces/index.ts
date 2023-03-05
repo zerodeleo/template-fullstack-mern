@@ -1,4 +1,4 @@
 export interface IPromiseState {
-  status: 'idle' | 'loading' | 'failed';
+  status: string;
   message: string;
 }

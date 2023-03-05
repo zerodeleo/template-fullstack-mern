@@ -1,31 +1,30 @@
-import React, { useState, FC } from 'react';
+import { FC, useContext, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import Authenticate from './components/auth/Authenticate';
+import { AuthContext } from './lib/context/AuthContext';
+import { initialState } from './lib/redux/reducers/authSlice';
+import { selectAuth, selectUser } from './lib/redux/selectors';
+interface IAppProps {}
 
-// Styles
-import * as styles from './styles';
+const App: FC<IAppProps> = (props) => {
+  const { _id } = useSelector(selectAuth);
+  const navigate = useNavigate();
 
-// Services
-import { ping } from './service';
+  useEffect(() => {
+    const ls_id = localStorage.getItem('_id');
+    if (ls_id) navigate(`/${ls_id}`);
+  }, []);
 
-const App = () => {
-  const [res, setRes] = useState('');
-
-  const handleClick = async () => {
-    const response = await ping();
-    setRes(response.data);
-  };
+  useEffect(() => {
+    if (!_id) navigate('/signin');
+    if (_id) navigate(`/${_id}`);
+  }, [_id]);
 
   return (
-    <section className={`${styles.center}`}>
-      <article>
-        <button className={`${styles.button}`} type="button" onClick={handleClick}>
-          Ping
-        </button>
-      </article>
-      <br />
-      <article>
-        <p className="text-xl">{res}</p>
-      </article>
-    </section>
+    <div>
+      <Authenticate />
+    </div>
   );
 };
 
