@@ -15,7 +15,6 @@ const service = async (args: IService) => {
   try {
     return await axios[args.method](`${API_URL}${args.url}`, args.body);
   } catch (err: any) {
-    console.error(err);
     return args.thunkAPI.rejectWithValue(err.response.data.message);
   }
 };
