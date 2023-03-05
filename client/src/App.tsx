@@ -22,9 +22,9 @@ const App: FC<IAppProps> = (props) => {
   }, [_id]);
 
   return (
-    <div>
+    <>
       <Authenticate />
-    </div>
+    </>
   );
 };
 

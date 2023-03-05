@@ -1,12 +1,8 @@
-import { AsyncThunkAction } from '@reduxjs/toolkit';
-import React, { createContext, useReducer, useCallback, FC, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import React, { createContext, FC } from 'react';
 import { authenticateUser, createUser, readUser } from '../redux/actions';
 import { useAppDispatch } from '../redux/hooks';
 
-import authReducer, { IAuthenticateUser, IAuthenticateUserState, reset } from '../redux/reducers/authSlice';
-import { initialState } from '../redux/reducers/authSlice';
-import { selectAuth, selectUser } from '../redux/selectors';
+import { reset } from '../redux/reducers/authSlice';
 
 type AppContextProviderProps = {
   children: React.ReactNode;

@@ -9,7 +9,6 @@ import AuthInput from './AuthInput';
 
 export const FormSignUp: FC = () => {
   const { signUp } = useContext(AuthContext);
-  const { _id } = useSelector(selectUser);
   const [credentials, setCredentials] = useState({ username: '', password: '', passwordRepeat: '' });
   const navigate = useNavigate();
 
