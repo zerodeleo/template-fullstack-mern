@@ -5,7 +5,7 @@ interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {}
 export const Input: FC<IInputProps> = (props) => {
   return (
     <>
-      <input {...props} />
+      <input {...props} autoComplete="off" />
     </>
   );
 };

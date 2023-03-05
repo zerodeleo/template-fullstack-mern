@@ -21,7 +21,7 @@ const AuthInput: FC<IAuthInputProps> = ({ credentials, handleChange, name, type,
       <div className="relative group">
         {!credentials[name as keyof ICredentials] && <label className={`${styles.authInputLabel}`}>{label}</label>}
         {credentials[name as keyof ICredentials] && <label className={`${styles.authInputLabelSmall}`}>{label}</label>}
-        <Input required className={`${styles.authInput}`} onChange={handleChange} type={type} name={name} value={credentials[name as keyof ICredentials]} />
+        <Input autoFocus={/username/.test(name)} required className={`${styles.authInput}`} onChange={handleChange} type={type} name={name} value={credentials[name as keyof ICredentials]} />
       </div>
     </div>
   );
