@@ -1,5 +1,5 @@
 import React, { createContext, FC, useEffect, useState, Dispatch, SetStateAction } from 'react';
-import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { useAppSelector } from '../redux/hooks';
 import { selectAuth, selectUser } from '../redux/selectors';
 
 type AppContextProviderProps = {
@@ -14,7 +14,6 @@ interface IErrorContext {
 const ErrorContext = createContext<IErrorContext>({ message: '', setError: () => {} });
 
 const ErrorContextProvider: FC<AppContextProviderProps> = ({ children }) => {
-  const dispatch = useAppDispatch();
   const { message: authError } = useAppSelector(selectAuth);
   const { message: userError } = useAppSelector(selectUser);
   const [message, setMessage] = useState('');

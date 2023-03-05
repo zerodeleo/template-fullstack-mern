@@ -1,7 +1,7 @@
-import React, { FC, useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
-import { selectAuth, selectUser } from '../../lib/redux/selectors';
+import { useNavigate } from 'react-router-dom';
+import { selectAuth } from '../../lib/redux/selectors';
 
 const Authenticate: FC = () => {
   const { _id } = useSelector(selectAuth);

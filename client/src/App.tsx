@@ -1,10 +1,8 @@
-import { FC, useContext, useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Authenticate from './components/auth/Authenticate';
-import { AuthContext } from './lib/context/AuthContext';
-import { initialState } from './lib/redux/reducers/authSlice';
-import { selectAuth, selectUser } from './lib/redux/selectors';
+import { selectAuth } from './lib/redux/selectors';
 interface IAppProps {}
 
 const App: FC<IAppProps> = (props) => {

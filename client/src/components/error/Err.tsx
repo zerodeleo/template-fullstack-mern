@@ -1,8 +1,8 @@
-import React, { FC, useContext, useEffect } from 'react';
+import { FC, useContext } from 'react';
 import { ErrorContext } from '../../lib/context/ErrorContext';
 import { styles } from '../../styles';
 
-const Error: FC = () => {
+const Err: FC = () => {
   const { message } = useContext(ErrorContext);
   return (
     <>
@@ -19,4 +19,4 @@ const Error: FC = () => {
   );
 };
 
-export default Error;
+export default Err;

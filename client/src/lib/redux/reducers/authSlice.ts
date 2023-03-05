@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { authenticateUser } from '../actions';
 import { IPromiseState } from '../interfaces';
 import { FulfilledAction, PendingAction, RejectedAction } from '../types';
 import { initialState as userInitialState } from './userSlice';

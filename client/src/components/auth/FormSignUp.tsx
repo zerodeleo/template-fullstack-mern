@@ -1,9 +1,7 @@
-import { FC, useContext, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { FC, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../lib/context/AuthContext';
 import { ErrorContext } from '../../lib/context/ErrorContext';
-import { selectUser } from '../../lib/redux/selectors';
 import { styles } from '../../styles';
 import { Button } from '../layout/Button';
 import AuthInput from './AuthInput';
