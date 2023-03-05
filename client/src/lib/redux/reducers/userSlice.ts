@@ -43,7 +43,6 @@ export const userSlice = createSlice({
     builder
       .addCase(actions.createUser.fulfilled, (state, action) => {
         const user = idleUser(action.payload.data);
-        console.log(user);
         localStorage.setItem('_id', user._id);
         return user;
       })

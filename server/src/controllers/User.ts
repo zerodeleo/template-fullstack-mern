@@ -21,7 +21,6 @@ const authenticateUser = async (req: Request, res: Response, next: NextFunction)
 
 const createUser = async (req: Request, res: Response, next: NextFunction) => {
   const { username, password } = req.body;
-  console.log(username, password);
 
   const _id = new mongoose.Types.ObjectId();
 

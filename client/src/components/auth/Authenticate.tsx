@@ -7,8 +7,6 @@ const Authenticate: FC = () => {
   const { _id } = useSelector(selectAuth);
   const navigate = useNavigate();
 
-  console.log(window.location.pathname);
-
   useEffect(() => {
     const ls_id = localStorage.getItem('_id');
     if (ls_id) navigate(`/${ls_id}`);

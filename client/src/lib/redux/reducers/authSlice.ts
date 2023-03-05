@@ -29,15 +29,11 @@ export const loadingUser = () => ({
   status: 'loading'
 });
 
-export const failedUser = (message: any) => {
-  console.log(message);
-  console.log('failed..');
-  return {
-    ...initialState,
-    status: 'failed',
-    message
-  };
-};
+export const failedUser = (message: any) => ({
+  ...initialState,
+  status: 'failed',
+  message
+});
 
 export const authSlice = createSlice({
   name: 'auth',
