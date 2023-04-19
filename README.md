@@ -57,8 +57,8 @@ When I started coding I spent so many hours trying to figure out how to create t
    - *Choose repo and change root folder to `client` for `client` deployment and `server` for `server` deployment*
    - *Deployment on [Render](https://render.com/) choose `static site` for `client` and `web-service` for `server`*
 2. For both `client` and `server`
-   - Build command: `build`
-   - Start command: `start`
+   - Build command: `yarn && yarn build`
+   - Start command: `yarn start`
 3. For deploying `client` add environment variables to CDN/CMS
    - `VITE_API_URL={placeholder for api url}`
    - Add Redirects/Rewrites
