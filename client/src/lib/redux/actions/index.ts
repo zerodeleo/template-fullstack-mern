@@ -27,7 +27,7 @@ export const authenticateUser = createAsyncThunk('users/authenticate', async (us
   return service({ method: 'post', url: `/users/authenticate`, body: { ...user }, thunkAPI });
 });
 
-export const createUser = createAsyncThunk('create/user', async (user: IAuthenticateUser, thunkAPI) => {
+export const createUser = createAsyncThunk('create/user/authenticate', async (user: IAuthenticateUser, thunkAPI) => {
   return service({ method: 'post', url: `/users/`, body: { ...user }, thunkAPI });
 });
 
